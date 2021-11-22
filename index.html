@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Fetch</title>
+</head>
+<body>
+    <h1>This is Home</h1>
+    <div class="container">
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>ID: </th>
+                    <th>Name: </th>
+                    <th>Email: </th>
+        
+                </tr>
+            </thead>
+            <tbody id="data">
+        
+        
+            </tbody>
+        
+        </table>
+        
+        
+        </div>
+    <script>
+         //Json Javascript notation
+         fetch("https://sheet.best/api/sheets/981366f0-5a82-4532-a2a2-68c66371e008")
+         .then(response => response.json())
+         .then(data =>{
+
+
+           
+           console.log(data)
+        //    for(i=0; i<data.length; i=i+1){
+
+        //       console.log(data[i])
+
+        //    }
+
+           if(data.length > 0){
+    var  temp = "";
+    data1 =   data.reverse()
+    data1.forEach((u) => {
+        temp += "<tr>"
+        temp += "<td>"+ u.name +"</td>"
+        temp += "<td>"+u.email+"</td>"
+        temp += "<td>"+u.phone+"</td></tr>"
+
+        
+    })
+    document.getElementById("data").innerHTML = temp;
+
+
+}
+        
+
+         })
+
+
+    </script>
+</body>
+</html>
